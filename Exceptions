@@ -1,0 +1,152 @@
+//code for eligibility of marriage by using CustomizedException(User Desfined)
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+	
+class MinorException extends Exception
+{
+    public MinorException(String msg)
+	{
+		super(msg);
+	}
+}
+class MajorException extends Exception
+{
+	public MajorException(String msg)
+	{ 
+	super(msg);
+	}
+}
+
+
+class SeniorCitizenException extends RuntimeException
+{
+	public SeniorCitizenException(String msg)
+	{
+		super(msg);
+	}
+}
+ class CustomizedException {
+	 public static void main(String[] args) {
+	 int age=0;
+	 Scanner sc=new Scanner(System.in);
+	 try
+	 {
+		 age=sc.nextInt();
+		 if(age<18)
+			 throw new MinorException("you are not eligible for marriage");
+		 else if(age>=18 &&age<40)
+			 throw new MajorException("you are eligible for marriage");
+		 else
+			 throw new SeniorCitizenException("you are too late");
+	 }
+	 catch(MinorException me)
+	 {
+		 System.out.println(me);
+	 }
+	 catch(MajorException me)
+	 {
+		 System.out.println(me);
+	 }
+	 catch(SeniorCitizenException me)
+	 {
+		 System.out.println(me);
+	 }
+	 catch(InputMismatchException me)
+	 {
+		 System.out.println("Input format is not correct");
+	 }
+	 catch(Exception e)
+	 {
+		 System.out.println(e);
+	 }
+
+	System.out.println(age);	
+	} 	
+}
+  
+
+//Checking the balance amount in bank by using exceptions
+import java.util.*;
+import java.util.InputMismatchException;
+class InsufficientBalException extends Exception
+{
+	public InsufficientBalException(String msg)
+	{
+		super(msg);
+	}
+}
+class CustomizedException{
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int curb=0,witha=0;
+		Scanner sc=new Scanner(System.in );
+		try
+		{
+			curb=sc.nextInt();
+			witha=sc.nextInt();
+			if(curb-witha<500)
+				throw new InsufficientBalException("Minimum of 500 balance should be required");
+			
+		}
+		catch(InputMismatchException me)
+		{
+			System.out.println("Input should be integer");
+		}
+		catch(InsufficientBalException ib)
+		{
+			System.out.println(ib);
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		System.out.println("Balance="+(curb-witha));
+
+	}
+
+}
+
+//Calculating the average of minimum 3 subject marks
+class NegativeValException extends Exception
+{
+	public NegativeValException(String msg)
+	{
+		super(msg);
+	}
+}
+class CustomizedException
+{
+	public static void main(String args[])
+	{
+		String name=null;
+		int m1=0,m2=0,m3=0;
+		try
+		{
+			name=args[0];
+			m1=Integer.parseInt(args[1]);
+			m2=Integer.parseInt(args[2]);
+			m3=Integer.parseInt(args[3]);
+			if(m1<0 || m2<0 || m3<0)
+				throw new NegativeValException("Marks should be Grater than zero");
+		}
+		{
+			System.out.println("Minimum of 4 arguments you need to pass");
+		}
+		catch(NumberFormatException  ne)
+		{
+			System.out.println("Marks should be Integers only");
+		}
+		catch(NegativeValException nve)
+		{
+			System.out.println("Marks should be greater than zero");
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		System.out.println("Name="+name);
+		System.out.println("Average is="+(m1+m2+m3)/3);
+	}
+}
