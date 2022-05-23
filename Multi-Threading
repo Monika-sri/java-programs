@@ -1,0 +1,76 @@
+//by giving the priority
+class Thread1 extends Thread
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+			System.out.println("Dhoni");
+		
+	}
+}
+class Thread2 extends Thread
+{
+	public void run()//the task which is to perform
+	{
+		for(int i=0;i<10;i++)
+			System.out.println("Sri");
+		}
+}
+class ThreadDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Thread1 t1=new Thread1(); //initialize the thread
+		Thread2 t2=new Thread2();
+	    t1.start();
+		t2.start();
+		for(int i=0;i<10;i++)
+		System.out.println("Monika");
+		System.out.println("T1 Priority="+t1.getPriority());
+		System.out.println("T2 Priority="+t2.getPriority());
+		System.out.println("Main Thread Priority="+Thread.currentThread());
+	}
+
+}
+
+//without using any priority
+class Thread1 implements Runnable
+{
+	public void run()
+	{
+		for(int i=0;i<10;i++)
+			System.out.println("charan");
+	}
+}
+class ThreadDemo
+{
+	public static void main(String args[]) {
+		Thread1 t1=new Thread1();
+		Thread t=new Thread(t1);
+		t.start();
+		for(int i=0;i<10;i++)
+		System.out.println("Monika");
+		
+	}
+}
+
+//printing name :(step by step)
+public class ThreadDemo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name="MONIKA SRI";
+		for(int i=0;i<name.length();i++)
+		{
+			System.out.println(name.charAt(i));
+			try {
+				Thread.sleep(2000);
+			}
+			catch(InterruptedException ie) 
+			{
+				
+			}
+		}
+	}
+
+}
